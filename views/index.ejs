@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var status = `<%- JSON.stringify(status)%>`;
+      if (JSON.parse(status) == "verified") {
+        if (confirm("Do you want to login?")) {
+          window.location.href = "http://localhost:3000";
+        }
+      }
+    </script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inika:wght@400;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Jomolhari&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google fonts -->
+    <!-- fontawsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- fontawsome -->
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+      }
+      .form_container {
+        width: 545px;
+        height: 728px;
+        flex-shrink: 0;
+        border-radius: 22px;
+        background: #eeeded;
+        box-shadow: 3px 7px 4px 0px rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 5rem 0;
+      }
+      .url {
+        color: #4069fe;
+        font-family: Inika;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 5rem;
+      }
+      .direction {
+        color: #000;
+        font-family: Jomolhari;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 1rem;
+      }
+      .email {
+        color: #000;
+        font-family: Inter;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 1rem;
+      }
+      .input {
+        width: 482px;
+        height: 67px;
+        flex-shrink: 0;
+        border-radius: 33px;
+        background: #d9d9d9;
+        box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.3);
+        color: #000;
+        font-family: "Inter";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        opacity: 0.5;
+        margin-bottom: 1rem;
+        padding-left: 5rem;
+      }
+      .send_btn {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+        width: 253px;
+        height: 64px;
+        flex-shrink: 0;
+        border-radius: 33px;
+        background: #2a57fd;
+        box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        font-family: Istok Web;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .input_holder {
+      }
+      .icon_holder {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 5rem;
+        height: 67px;
+      }
+      i {
+        font-size: 1.5rem;
+      }
+      .input {
+        width: 482px;
+        height: 67px;
+        flex-shrink: 0;
+        border-radius: 33px;
+        background: #d9d9d9;
+        box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.3);
+        color: #000;
+        font-family: "Inter";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        opacity: 0.5;
+        margin-bottom: 1rem;
+        padding-left: 5rem;
+      }
+      #error {
+        font-family: "Inter";
+        color: #d9534f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="form_container">
+        <form id="form" action="" method="post" onsubmit="checkPassMatch()">
+          <div class="url">makeslifeeasy.shop</div>
+          <div class="direction">Please reset your password below :)</div>
+          <h1 class="email"><%=email%></h1>
+
+          <div class="input_holder">
+            <div class="icon_holder">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              id="password"
+              onfocus="makeErrorEmpty()"
+              placeholder="password"
+            />
+          </div>
+
+          <div class="input_holder">
+            <div class="icon_holder">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <input
+              class="input"
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              id="confirm-password"
+              onfocus="makeErrorEmpty()"
+              placeholder="confirm-password"
+            />
+          </div>
+          <div id="error" class="error"></div>
+          <input class="send_btn" type="submit" value="submit" />
+        </form>
+      </div>
+    </div>
+    <script>
+      checkPassMatch = () => {
+        event.preventDefault();
+        var password = document.getElementById("password");
+        var confirmPassword = document.getElementById("confirm-password");
+        var form = document.getElementById("form");
+        var error = document.getElementById("error");
+        if (password.value === confirmPassword.value) {
+          if (password.value.length < 8) {
+            error.innerHTML = "Password must be at least 8 characters";
+          } else if (password.value.search(/[a-z]/) < 0) {
+            error.innerHTML =
+              "Password must contain at least one lowercase letter";
+          } else if (password.value.search(/[A-Z]/) < 0) {
+            error.innerHTML =
+              "Password must contain at least one uppercase letter";
+          } else if (password.value.search(/[0-9]/) < 0) {
+            error.innerHTML = "Password must contain at least one number";
+          } else {
+            form.submit();
+          }
+        } else {
+          error.innerHTML = "Password doesn't match";
+        }
+      };
+      makeErrorEmpty = () => {
+        document.getElementById("error").innerHTML = "";
+      };
+    </script>
+  </body>
+</html>
