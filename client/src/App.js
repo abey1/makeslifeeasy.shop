@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Home, Signup, Login, Forgetpassword } from "./pages";
+import { Home, Signup, Login, Forgetpassword, Favorites } from "./pages";
 import { Navbar } from "./components";
 import { useUserContext } from "./contexts/UserContext";
 import { server_url, LOGIN } from "./utilities/constants";
@@ -29,6 +29,7 @@ function App() {
           // save upadated token
           localStorage.setItem("token", token);
           userDispatch({ type: LOGIN, payload: email });
+          console.log(email);
         }
       } catch (error) {
         console.log(error.message);
@@ -42,9 +43,10 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route
-              path="/"
-              element={email === "" ? <Navigate to="/login" /> : <Home />}
+              path="/favorites"
+              element={email !== "" ? <Favorites /> : <Navigate to="/" />}
             />
             <Route
               path="/login"

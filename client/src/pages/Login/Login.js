@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import { Link } from "react-router-dom";
 import { server_url, LOGIN } from "../../utilities/constants";
 import { useUserContext } from "../../contexts/UserContext";
+import { Navigate } from "react-router-dom";
 const Login = () => {
   const { userDispatch } = useUserContext();
   return (
@@ -29,6 +30,7 @@ const Login = () => {
                   const { email, token } = json;
                   userDispatch({ type: LOGIN, payload: email });
                   localStorage.setItem("token", token);
+                  console.log("logged in");
                 } else {
                   values.error = json.error;
                 }
