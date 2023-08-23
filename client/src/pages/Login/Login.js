@@ -10,7 +10,7 @@ const Login = () => {
   const { userDispatch } = useUserContext();
   return (
     <div className="login_page">
-      <div className="login_left_right">
+      <div className="login_left">
         <div>
           <Formik
             initialValues={{ email: "", password: "", error: "" }}
@@ -121,7 +121,7 @@ const Login = () => {
           </Formik>
         </div>
       </div>
-      <div className="login_left_right">
+      <div className="login_right">
         <img src={loginImage} alt="login pic" />
       </div>
     </div>

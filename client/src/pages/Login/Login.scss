@@ -1,12 +1,12 @@
 .login_page {
   height: calc(100vh - 64px);
-
   display: grid;
   grid-template-columns: 1fr 1fr;
-  .login_left_right {
+  .login_left {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
     .login_card {
       width: 545px;
       height: 728px;
@@ -167,5 +167,17 @@
         }
       }
     }
+  }
+  .login_right {
+    @media screen and (max-width: 1280px) {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px red solid;
+    height: fit-content;
   }
 }
