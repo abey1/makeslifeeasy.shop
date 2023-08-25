@@ -6,7 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: calc(2rem + 64px);
+    margin-bottom: 64px;
     .login_card {
       width: 545px;
       height: 728px;
@@ -46,7 +47,6 @@
           justify-content: center;
           width: 5rem;
           height: 67px;
-
           i {
             font-size: 1.5rem;
           }
@@ -67,6 +67,11 @@
           opacity: 0.5;
           margin-bottom: 1rem;
           padding-left: 5rem;
+
+          @media screen and (max-width: 600px) {
+            width: 350px;
+            font-size: 20px;
+          }
         }
       }
       .login_error {
@@ -166,6 +171,9 @@
           }
         }
       }
+      @media screen and (max-width: 600px) {
+        width: 400px;
+      }
     }
   }
   .login_right {
@@ -177,7 +185,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px red solid;
     height: fit-content;
   }
 }

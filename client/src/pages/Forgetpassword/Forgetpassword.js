@@ -107,7 +107,7 @@ const Forgetpassword = () => {
           </Formik>
         </div>
       </div>
-      <div className="forgetpassword_left_right">
+      <div className="forgetpassword_right">
         <img src={loginImage} alt="login pic" />
       </div>
     </div>

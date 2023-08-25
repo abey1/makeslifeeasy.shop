@@ -1,12 +1,13 @@
 .signup_page {
   height: calc(100vh - 64px);
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   .signup_left_right {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: calc(2rem + 64px);
+    margin-bottom: 64px;
     .signup_card {
       width: 545px;
       height: 728px;
@@ -67,6 +68,11 @@
           opacity: 0.5;
           margin-bottom: 1rem;
           padding-left: 5rem;
+
+          @media screen and (max-width: 600px) {
+            width: 350px;
+            font-size: 20px;
+          }
         }
       }
       .signup_error_holder {
@@ -128,7 +134,6 @@
         line-height: normal;
         .signup_in_login {
           cursor: pointer;
-
           font-family: Istok Web;
           font-size: 24px;
           font-style: normal;
@@ -141,6 +146,20 @@
           }
         }
       }
+      @media screen and (max-width: 600px) {
+        width: 400px;
+      }
     }
+  }
+  .signup_right {
+    @media screen and (max-width: 1280px) {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
   }
 }
