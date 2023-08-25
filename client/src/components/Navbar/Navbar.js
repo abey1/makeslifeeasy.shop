@@ -7,6 +7,7 @@ import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
 import { MENU_OPEN, MENU_CLOSE } from "../../utilities/constants";
 
 const Navbar = () => {
+  const { home_page_mounted } = useGlobalAppContext();
   const { email, userDispatch } = useUserContext();
   const { menu_is_open, globalDispatch } = useGlobalAppContext();
   const handleLogout = () => {
@@ -18,14 +19,17 @@ const Navbar = () => {
         <Link className="logo" to="/">
           MLE
         </Link>
-        <div className="nav_center">
-          <div className="search_input_container">
-            <div className="magnifying_glass_holder">
-              <i className="fa-solid fa-magnifying-glass magnifying_glass"></i>
+        {home_page_mounted && (
+          <div className="nav_center">
+            <div className="search_input_container">
+              <div className="magnifying_glass_holder">
+                <i className="fa-solid fa-magnifying-glass magnifying_glass"></i>
+              </div>
+              <input className="search" type="text" />
             </div>
-            <input className="search" type="text" />
           </div>
-        </div>
+        )}
+
         <div className="nav_right">
           <div className="nav_right_left">
             {email === "" ? (
