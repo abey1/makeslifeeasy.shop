@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Home, Signup, Login, Forgetpassword, Favorites } from "./pages";
+import { Home, Signup, Login, Forgetpassword, Favorites, Admin } from "./pages";
 import { Navbar } from "./components";
 import { useUserContext } from "./contexts/UserContext";
 import { server_url, LOGIN } from "./utilities/constants";
@@ -46,7 +46,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route
               path="/favorites"
-              element={email !== "" ? <Favorites /> : <Navigate to="/" />}
+              element={email !== "" ? <Favorites /> : <Home />}
             />
             <Route
               path="/login"
@@ -59,6 +59,10 @@ function App() {
             <Route
               path="/forgetpassword"
               element={email === "" ? <Forgetpassword /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/admin"
+              element={email === "bruckabey@gmail.com" ? <Admin /> : <Home />}
             />
           </Routes>
         </Router>

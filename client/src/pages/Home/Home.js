@@ -13,7 +13,7 @@ const Home = () => {
       globalDispatch({ type: HOME_UNMOUNTED });
     };
   }, []);
-  return <div>home</div>;
+  return <div className="home_holder">home</div>;
 };
 
 export default Home;

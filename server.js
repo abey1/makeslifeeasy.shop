@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const path = require("path");
 const userRoute = require("./routes/userRoute");
+const itemRoute = require("./routes/itemRoute");
 const cors = require("cors");
 
 // express app
@@ -17,11 +18,13 @@ app.set("view engine", "ejs");
 // this line helps the server to receive data from ejs in this project password for resetting
 // the user password
 app.use(express.urlencoded({ extended: false }));
+
 // allows the server to use json
 app.use(express.json());
 
 //routes
 app.use("/api/user", userRoute);
+app.use("/api/goods", itemRoute);
 
 //connect to db
 mongoose
