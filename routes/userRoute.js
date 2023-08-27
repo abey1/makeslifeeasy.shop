@@ -9,6 +9,7 @@ const {
   forgetPassword,
   handleForgetPassword,
   resetNewPassword,
+  updateFavorite,
 } = require("../controllers/userController");
 
 // verify token
@@ -28,5 +29,8 @@ router.get("/reset-password/:id/:token", handleForgetPassword);
 
 // updates user detail with new password after the user forgotten his/her password
 router.post("/reset-password/:id/:token", resetNewPassword);
+
+// update user favorite
+router.post("/update_favorite", updateFavorite);
 
 module.exports = router;

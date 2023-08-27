@@ -25,10 +25,10 @@ function App() {
         });
         if (response.ok) {
           const json = await response.json();
-          const { email, token } = json;
+          const { _id, email, token, favorite } = json;
           // save upadated token
           localStorage.setItem("token", token);
-          userDispatch({ type: LOGIN, payload: email });
+          userDispatch({ type: LOGIN, payload: { _id, email, favorite } });
           console.log(email);
         }
       } catch (error) {
