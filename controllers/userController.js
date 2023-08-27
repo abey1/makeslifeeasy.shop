@@ -37,10 +37,10 @@ const verifyToken = async (req, res) => {
   }
   try {
     const { _id } = jwt.verify(token, process.env.SECRET);
-    const { email } = await UserModel.findOne({ _id });
+    const { email, favorite } = await UserModel.findOne({ _id });
     const newToken = createToken(_id);
     // send an updated token as well
-    res.status(200).json({ email, token: newToken });
+    res.status(200).json({ _id, email, token: newToken, favorite });
   } catch (error) {
     res.status(400).json({ error });
   }
@@ -52,7 +52,9 @@ const loginUser = async (req, res) => {
   try {
     const user = await UserModel.login(email, password);
     const token = createToken(user._id);
-    res.status(200).json({ email, token });
+    res
+      .status(200)
+      .json({ _id: user._id, email, token, favorite: user.favorite });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -64,7 +66,9 @@ const signupUser = async (req, res) => {
   try {
     const user = await UserModel.signup(email, password);
     const token = createToken(user._id);
-    res.status(200).json({ email, token });
+    res
+      .status(200)
+      .json({ _id: user._id, email, token, favorite: user.favorite });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -161,6 +165,20 @@ const resetNewPassword = async (req, res) => {
   }
 };
 
+// updates users favorite
+const updateFavorite = async (req, res) => {
+  try {
+    const { id, newFavorite } = req.body;
+    const status = await UserModel.updateOne(
+      { _id: id },
+      { $set: { favorite: newFavorite } }
+    );
+    res.status(200).json(status);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   loginUser,
   signupUser,
@@ -168,4 +186,5 @@ module.exports = {
   forgetPassword,
   handleForgetPassword,
   resetNewPassword,
+  updateFavorite,
 };

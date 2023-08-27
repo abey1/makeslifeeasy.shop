@@ -39,8 +39,12 @@ const Signup = () => {
                   if (json.error) {
                     values.error = json.error;
                   } else {
-                    userDispatch({ type: SIGNUP, payload: json.email });
-                    localStorage.setItem("token", json.token);
+                    const { _id, email, token, favorite } = json;
+                    userDispatch({
+                      type: SIGNUP,
+                      payload: { _id, email, favorite },
+                    });
+                    localStorage.setItem("token", token);
                   }
                 }
               } catch (error) {

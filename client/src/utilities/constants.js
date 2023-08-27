@@ -6,6 +6,8 @@ const MENU_OPEN = "MENU_OPEN";
 const MENU_CLOSE = "MENU_CLOSE";
 const HOME_MOUNTED = "HOME_MOUNTED";
 const HOME_UNMOUNTED = "HOME_UNMOUNTED";
+const IS_LOADING = "IS_LOADING";
+const ISNT_LOADING = "ISNT_LOADING";
 
 export {
   server_url,
@@ -16,4 +18,6 @@ export {
   MENU_CLOSE,
   HOME_MOUNTED,
   HOME_UNMOUNTED,
+  IS_LOADING,
+  ISNT_LOADING,
 };

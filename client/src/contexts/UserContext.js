@@ -5,20 +5,24 @@ import { SIGNUP, LOGIN, LOGOUT } from "../utilities/constants";
 export const UserContext = createContext();
 
 const initialState = {
+  _id: "",
   email: "",
+  favorite: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case SIGNUP: {
-      return { ...state, email: action.payload };
+      const { _id, email, favorite } = action.payload;
+      return { ...state, _id, email, favorite };
     }
     case LOGIN: {
-      return { ...state, email: action.payload };
+      const { _id, email, favorite } = action.payload;
+      return { ...state, _id, email, favorite };
     }
     case LOGOUT: {
       localStorage.removeItem("token");
-      return { ...state, email: "" };
+      return { ...state, _id: "", email: "", favorite: [] };
     }
     default: {
       return state;

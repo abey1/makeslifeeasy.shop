@@ -26,9 +26,13 @@ const Login = () => {
                   }),
                 });
                 const json = await result.json();
+                console.log(json);
                 if (result.ok) {
-                  const { email, token } = json;
-                  userDispatch({ type: LOGIN, payload: email });
+                  const { _id, email, token, favorite } = json;
+                  userDispatch({
+                    type: LOGIN,
+                    payload: { _id, email, favorite },
+                  });
                   localStorage.setItem("token", token);
                   console.log("logged in");
                 } else {
@@ -95,7 +99,7 @@ const Login = () => {
 
                   <div className="signin_btn_loader_holder">
                     {isSubmitting ? (
-                      <div class="loader"></div>
+                      <div className="loader"></div>
                     ) : (
                       <button
                         className="signin_btn"

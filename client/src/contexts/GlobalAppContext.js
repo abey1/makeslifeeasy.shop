@@ -4,11 +4,14 @@ import {
   MENU_CLOSE,
   HOME_MOUNTED,
   HOME_UNMOUNTED,
+  IS_LOADING,
+  ISNT_LOADING,
 } from "../utilities/constants";
 
 export const GlobalAppContext = createContext();
 
 const initialState = {
+  isLoading: false,
   menu_is_open: false,
   home_page_mounted: false,
 };
@@ -26,6 +29,12 @@ const reducer = (state, action) => {
     }
     case HOME_UNMOUNTED: {
       return { ...state, home_page_mounted: false };
+    }
+    case IS_LOADING: {
+      return { ...state, isLoading: true };
+    }
+    case ISNT_LOADING: {
+      return { ...state, isLoading: false };
     }
     default: {
       return { ...state };
