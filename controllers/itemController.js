@@ -13,6 +13,7 @@ const insertItem = async (req, res) => {
 const getItems = async (req, res) => {
   const limitedAmount = 8;
   const { page } = req.body;
+
   try {
     const items = await ItemModel.find()
       .skip(page * limitedAmount)
@@ -29,8 +30,20 @@ const getItemMeta = async (req, res) => {
     const length = Math.ceil(allItems.length / 8);
     res.status(200).json({ length });
   } catch (error) {
-    res.status(200).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
-module.exports = { insertItem, getItems, getItemMeta };
+const getFavoriteItems = async (req, res) => {
+  const { favorite } = req.body;
+
+  try {
+    const response = await ItemModel.find({ _id: { $in: favorite } });
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { insertItem, getItems, getItemMeta, getFavoriteItems };

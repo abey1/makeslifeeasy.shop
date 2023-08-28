@@ -5,6 +5,7 @@ const {
   insertItem,
   getItems,
   getItemMeta,
+  getFavoriteItems,
 } = require("../controllers/itemController");
 
 // insert new item
@@ -15,5 +16,8 @@ router.post("/get", getItems);
 
 // get items metadata
 router.post("/get_meta", getItemMeta);
+
+// get favorite items
+router.post("/get_favorite_items", getFavoriteItems);
 
 module.exports = router;

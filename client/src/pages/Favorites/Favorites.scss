@@ -1,3 +1,13 @@
 .favorites_holder {
   margin-top: calc(64px + 2rem);
+  .empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inika";
+    width: 100vw;
+    text-transform: capitalize;
+  }
+  .items_holder {
+  }
 }
