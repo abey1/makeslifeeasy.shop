@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Signup.scss";
 import loginImage from "../../assets/login_image.png";
 import { Formik } from "formik";
@@ -6,9 +6,15 @@ import { Link } from "react-router-dom";
 import { server_url } from "../../utilities/constants";
 import { useUserContext } from "../../contexts/UserContext";
 import { SIGNUP } from "../../utilities/constants";
+import { SET_SEARCHING } from "../../utilities/constants";
+import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
 
 const Signup = () => {
   const { email, userDispatch } = useUserContext();
+  const { globalDispatch } = useGlobalAppContext();
+  useEffect(() => {
+    globalDispatch({ type: SET_SEARCHING, payload: false });
+  }, []);
   return (
     <div className="signup_page">
       <div className="signup_left_right">

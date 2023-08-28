@@ -1,43 +1,45 @@
 .home_holder {
   margin: calc(64px + 2rem) 0;
-  .pagination_holder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5rem 0;
-
-    .pagination {
+  .main_home {
+    .pagination_holder {
       display: flex;
       align-items: center;
-      list-style: none;
-    }
-    .pagination_a {
-      cursor: pointer;
-      color: black;
-      float: left;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      margin: 0 4px;
-      font-family: "Inika";
-      font-size: 1.2rem;
-      transition: background-color 0.3s;
-      &:hover:not(.pagination_active) {
-        background-color: #ddd;
+      justify-content: center;
+      margin: 5rem 0;
+
+      .pagination {
+        display: flex;
+        align-items: center;
+        list-style: none;
       }
-    }
-    .pagination_next,
-    .pagination_previous {
-      cursor: pointer;
-      font-family: "Inika";
-      font-size: 2rem;
-      margin: 0 2rem;
-    }
-    .pagination_active {
-      background-color: #4caf50;
-      color: white;
-      border-radius: 5px;
+      .pagination_a {
+        cursor: pointer;
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+        font-family: "Inika";
+        font-size: 1.2rem;
+        transition: background-color 0.3s;
+        &:hover:not(.pagination_active) {
+          background-color: #ddd;
+        }
+      }
+      .pagination_next,
+      .pagination_previous {
+        cursor: pointer;
+        font-family: "Inika";
+        font-size: 2rem;
+        margin: 0 2rem;
+      }
+      .pagination_active {
+        background-color: #4caf50;
+        color: white;
+        border-radius: 5px;
+      }
     }
   }
 }

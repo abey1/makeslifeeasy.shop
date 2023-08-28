@@ -8,13 +8,16 @@ import {
 import { Home, Signup, Login, Forgetpassword, Favorites, Admin } from "./pages";
 import { Navbar } from "./components";
 import { useUserContext } from "./contexts/UserContext";
-import { server_url, LOGIN } from "./utilities/constants";
+import { useGlobalAppContext } from "./contexts/GlobalAppContext";
+import { server_url, LOGIN, SAVE_ALL_ITEMS } from "./utilities/constants";
 
 import "./App.scss";
 
 function App() {
   const { email, userDispatch } = useUserContext();
+  const { globalDispatch } = useGlobalAppContext();
   useEffect(() => {
+    // verify token located in local storage
     const verifyToken = async () => {
       const token = localStorage.getItem("token");
       try {
@@ -36,6 +39,21 @@ function App() {
       }
     };
     verifyToken();
+    // get all items for searching purpose
+    const getAllItems = async () => {
+      try {
+        const response = await fetch(`${server_url}/goods/all_items`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+        const json = await response.json();
+        globalDispatch({ type: SAVE_ALL_ITEMS, payload: json });
+        console.log("all items", json);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllItems();
   }, []);
   return (
     <div className="app">

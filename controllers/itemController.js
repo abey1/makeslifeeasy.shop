@@ -46,4 +46,19 @@ const getFavoriteItems = async (req, res) => {
   }
 };
 
-module.exports = { insertItem, getItems, getItemMeta, getFavoriteItems };
+const getAllItems = async (req, res) => {
+  try {
+    const response = await ItemModel.find();
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  insertItem,
+  getItems,
+  getItemMeta,
+  getFavoriteItems,
+  getAllItems,
+};

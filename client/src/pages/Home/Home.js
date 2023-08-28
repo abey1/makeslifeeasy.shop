@@ -11,7 +11,7 @@ import { Items } from "../../components";
 import("./Home.scss");
 
 const Home = () => {
-  const { globalDispatch } = useGlobalAppContext();
+  const { isSearching, globalDispatch } = useGlobalAppContext();
   const [page, setPage] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(5);
@@ -59,28 +59,34 @@ const Home = () => {
   };
   return (
     <div className="home_holder">
-      <Items items={items} />
-      <div className="pagination_holder">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel=">>"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={2}
-          pageCount={totalPages}
-          previousLabel="<<"
-          renderOnZeroPageCount={null}
-          className="pagination"
-          pageClassName="pagination_li"
-          pageLinkClassName="pagination_a"
-          activeLinkClassName="pagination_active"
-          previousClassName="pagination_previous"
-          nextClassName="pagination_next"
-          previousLinkClassName="pagination_previous_a"
-          nextLinkClassName="pagination_next_a"
-          disabledClassName="pagination_disabled"
-          disabledLinkClassName="pagination_disabled_a"
-        />
-      </div>
+      {isSearching ? (
+        <div></div>
+      ) : (
+        <div className="main_home">
+          <Items items={items} />
+          <div className="pagination_holder">
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">>"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={2}
+              pageCount={totalPages}
+              previousLabel="<<"
+              renderOnZeroPageCount={null}
+              className="pagination"
+              pageClassName="pagination_li"
+              pageLinkClassName="pagination_a"
+              activeLinkClassName="pagination_active"
+              previousClassName="pagination_previous"
+              nextClassName="pagination_next"
+              previousLinkClassName="pagination_previous_a"
+              nextLinkClassName="pagination_next_a"
+              disabledClassName="pagination_disabled"
+              disabledLinkClassName="pagination_disabled_a"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
