@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { LOGOUT } from "../../utilities/constants";
 import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
-import { MENU_OPEN, MENU_CLOSE } from "../../utilities/constants";
+import {
+  MENU_OPEN,
+  MENU_CLOSE,
+  SET_SEARCHING,
+} from "../../utilities/constants";
 
 const Navbar = () => {
-  const { home_page_mounted } = useGlobalAppContext();
+  const { home_page_mounted, isSearching } = useGlobalAppContext();
   const { email, userDispatch } = useUserContext();
   const { menu_is_open, globalDispatch } = useGlobalAppContext();
   const [searchTxt, setSearchTxt] = useState("");
@@ -18,9 +22,19 @@ const Navbar = () => {
   return (
     <div className="nav_container">
       <div className="nav">
-        <Link className="logo" to="/">
-          MLE
-        </Link>
+        {isSearching ? (
+          <i
+            className="fa-solid fa-arrow-left nav-back"
+            onClick={() => {
+              globalDispatch({ type: SET_SEARCHING, payload: false });
+            }}
+          ></i>
+        ) : (
+          <Link className="logo" to="/">
+            MLE
+          </Link>
+        )}
+
         {home_page_mounted && (
           <div className="nav_center">
             <div className="search_input_container">
@@ -39,6 +53,7 @@ const Navbar = () => {
                 className="search_btn"
                 onClick={() => {
                   console.log(searchTxt);
+                  globalDispatch({ type: SET_SEARCHING, payload: true });
                 }}
               >
                 search

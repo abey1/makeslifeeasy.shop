@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Login.scss";
 import loginImage from "../../assets/login_image.png";
 import { Formik } from "formik";
@@ -6,8 +6,15 @@ import { Link } from "react-router-dom";
 import { server_url, LOGIN } from "../../utilities/constants";
 import { useUserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
+import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
+import { SET_SEARCHING } from "../../utilities/constants";
+
 const Login = () => {
   const { userDispatch } = useUserContext();
+  const { globalDispatch } = useGlobalAppContext();
+  useEffect(() => {
+    globalDispatch({ type: SET_SEARCHING, payload: false });
+  }, []);
   return (
     <div className="login_page">
       <div className="login_left">

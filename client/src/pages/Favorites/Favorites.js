@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useUserContext } from "../../contexts/UserContext";
+import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
 import { server_url } from "../../utilities/constants";
 import { Items } from "../../components";
+import { SET_SEARCHING } from "../../utilities/constants";
 import "./Favorites.scss";
 
 const Favorites = () => {
   const [favItems, setFavItems] = useState([]);
   const { favorite } = useUserContext();
+  const { globalDispatch } = useGlobalAppContext();
 
   const getFavoriteItems = async () => {
     const response = await fetch(`${server_url}/goods/get_favorite_items`, {
@@ -20,6 +23,7 @@ const Favorites = () => {
 
   useEffect(() => {
     getFavoriteItems();
+    globalDispatch({ type: SET_SEARCHING, payload: false });
   }, []);
   return (
     <div className="favorites_holder">
