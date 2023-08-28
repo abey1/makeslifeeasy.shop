@@ -1,6 +1,6 @@
 import "./Navbar.scss";
-import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { LOGOUT } from "../../utilities/constants";
 import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
@@ -10,6 +10,8 @@ const Navbar = () => {
   const { home_page_mounted } = useGlobalAppContext();
   const { email, userDispatch } = useUserContext();
   const { menu_is_open, globalDispatch } = useGlobalAppContext();
+  const [searchTxt, setSearchTxt] = useState("");
+
   const handleLogout = () => {
     userDispatch({ type: LOGOUT });
   };
@@ -25,7 +27,22 @@ const Navbar = () => {
               <div className="magnifying_glass_holder">
                 <i className="fa-solid fa-magnifying-glass magnifying_glass"></i>
               </div>
-              <input className="search" type="text" />
+              <input
+                className="search"
+                type="text"
+                value={searchTxt}
+                onChange={(e) => {
+                  setSearchTxt(e.target.value);
+                }}
+              />
+              <button
+                className="search_btn"
+                onClick={() => {
+                  console.log(searchTxt);
+                }}
+              >
+                search
+              </button>
             </div>
           </div>
         )}

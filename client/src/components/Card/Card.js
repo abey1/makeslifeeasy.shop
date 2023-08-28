@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Card.scss";
 import { useUserContext } from "../../contexts/UserContext";
 import { server_url } from "../../utilities/constants";
-
+import { useNavigate } from "react-router-dom";
 const Card = ({ id, title, item_url, image_url }) => {
   const { _id, favorite } = useUserContext();
   const [liked, setLiked] = useState(favorite.includes(id));
+  const navigate = useNavigate();
   useEffect(() => {
     setLiked(favorite.includes(id));
   }, [favorite]);
@@ -25,9 +26,25 @@ const Card = ({ id, title, item_url, image_url }) => {
 
   const handleFavorite = (e) => {
     e.preventDefault();
-    favorite.push(id);
-    updateFavorite();
-    setLiked(!liked);
+    // if user is logged in
+    if (_id === "") {
+      // if ok is clicked
+      const response = window.confirm("You must login to like items");
+      if (response) {
+        console.log("ok is clicked");
+        navigate("/login");
+      }
+    } else {
+      if (favorite.includes(id)) {
+        const index = favorite.indexOf(id);
+        // the second argument is to remove the item at index
+        favorite.splice(index, 1);
+      } else {
+        favorite.push(id);
+      }
+      updateFavorite();
+      setLiked(!liked);
+    }
   };
   return (
     <a

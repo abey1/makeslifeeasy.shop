@@ -12,7 +12,7 @@ import("./Home.scss");
 
 const Home = () => {
   const { globalDispatch } = useGlobalAppContext();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(5);
 
@@ -50,10 +50,12 @@ const Home = () => {
       globalDispatch({ type: HOME_UNMOUNTED });
     };
   }, []);
+  useEffect(() => {
+    fetchData();
+  }, [page]);
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     setPage(event.selected);
-    fetchData();
   };
   return (
     <div className="home_holder">
