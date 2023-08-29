@@ -8,6 +8,7 @@ import {
   ISNT_LOADING,
   SAVE_ALL_ITEMS,
   SET_SEARCHING,
+  SET_SEARCHED_ITEMS,
 } from "../utilities/constants";
 
 export const GlobalAppContext = createContext();
@@ -17,6 +18,7 @@ const initialState = {
   menu_is_open: false,
   home_page_mounted: false,
   all_items: [],
+  searched_items: [],
   isSearching: false,
 };
 
@@ -45,6 +47,9 @@ const reducer = (state, action) => {
     }
     case SET_SEARCHING: {
       return { ...state, isSearching: action.payload };
+    }
+    case SET_SEARCHED_ITEMS: {
+      return { ...state, searched_items: action.payload };
     }
     default: {
       return { ...state };

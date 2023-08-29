@@ -11,7 +11,7 @@ import { Items } from "../../components";
 import("./Home.scss");
 
 const Home = () => {
-  const { isSearching, globalDispatch } = useGlobalAppContext();
+  const { isSearching, searched_items, globalDispatch } = useGlobalAppContext();
   const [page, setPage] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(5);
@@ -60,7 +60,13 @@ const Home = () => {
   return (
     <div className="home_holder">
       {isSearching ? (
-        <div></div>
+        <div>
+          {searched_items.length === 0 ? (
+            <div className="empty">no items found</div>
+          ) : (
+            <Items items={searched_items} />
+          )}
+        </div>
       ) : (
         <div className="main_home">
           <Items items={items} />

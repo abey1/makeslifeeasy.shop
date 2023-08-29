@@ -48,7 +48,7 @@ function App() {
         });
         const json = await response.json();
         globalDispatch({ type: SAVE_ALL_ITEMS, payload: json });
-        console.log("all items", json);
+        console.log("all items = ", json);
       } catch (error) {
         console.log(error);
       }
