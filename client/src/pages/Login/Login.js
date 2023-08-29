@@ -132,9 +132,9 @@ const Login = () => {
           </Formik>
         </div>
       </div>
-      <div className="login_right">
+      {/* <div className="login_right">
         <img src={loginImage} alt="login pic" />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -8,16 +8,30 @@ import {
   MENU_OPEN,
   MENU_CLOSE,
   SET_SEARCHING,
+  SET_SEARCHED_ITEMS,
 } from "../../utilities/constants";
 
 const Navbar = () => {
-  const { home_page_mounted, isSearching } = useGlobalAppContext();
+  const {
+    menu_is_open,
+    home_page_mounted,
+    all_items,
+    isSearching,
+    globalDispatch,
+  } = useGlobalAppContext();
   const { email, userDispatch } = useUserContext();
-  const { menu_is_open, globalDispatch } = useGlobalAppContext();
   const [searchTxt, setSearchTxt] = useState("");
 
   const handleLogout = () => {
     userDispatch({ type: LOGOUT });
+  };
+
+  const handleSearch = () => {
+    const foundItems = all_items.filter((item, index) => {
+      return item.title.toLowerCase().includes(searchTxt.toLowerCase());
+    });
+    globalDispatch({ type: SET_SEARCHING, payload: true });
+    globalDispatch({ type: SET_SEARCHED_ITEMS, payload: foundItems });
   };
   return (
     <div className="nav_container">
@@ -26,6 +40,7 @@ const Navbar = () => {
           <i
             className="fa-solid fa-arrow-left nav-back"
             onClick={() => {
+              setSearchTxt("");
               globalDispatch({ type: SET_SEARCHING, payload: false });
             }}
           ></i>
@@ -49,13 +64,7 @@ const Navbar = () => {
                   setSearchTxt(e.target.value);
                 }}
               />
-              <button
-                className="search_btn"
-                onClick={() => {
-                  console.log(searchTxt);
-                  globalDispatch({ type: SET_SEARCHING, payload: true });
-                }}
-              >
+              <button className="search_btn" onClick={handleSearch}>
                 search
               </button>
             </div>
