@@ -62,7 +62,7 @@ const Login = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <div className="login_card">
-                  <div className="login_card_title">sign in</div>
+                  <div className="login_card_title">login</div>
                   <div className="login_input_holder">
                     <div className="icon_holder">
                       <i class="fa-regular fa-envelope"></i>
