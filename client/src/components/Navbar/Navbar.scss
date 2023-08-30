@@ -11,24 +11,41 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #4caf50;
+    background: linear-gradient(to left, #4caf50, #ffffff);
     padding: 0 1rem;
     overflow: hidden;
+    border-left: 2px #4caf50 solid;
+    border-right: 2px #4caf50 solid;
+    border-bottom: 2px #4caf50 solid;
+    border-radius: 0 0 20px 20px;
     @media screen and (min-width: 1280px) {
       width: 1280px;
     }
+
     .logo {
       color: white;
-      font-size: 2rem;
+      font-size: 1rem;
       font-weight: bolder;
       cursor: pointer;
       font-family: "Dancing Script";
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      border: 2px #4caf50 solid;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      .fa-bag-shopping {
+        font-size: 2rem;
+        color: #4caf50;
+      }
     }
     .nav-back {
       cursor: pointer;
       font-size: 2rem;
-      color: white;
+      color: #4caf50;
     }
     .nav_center {
       .search_input_container {
@@ -56,7 +73,7 @@
           padding-left: 50px;
           border-radius: 10px;
           border: 1px white solid;
-          background-color: #4caf50;
+          background-color: #77b678;
           &:focus {
             outline: none;
             border: 2px white solid;

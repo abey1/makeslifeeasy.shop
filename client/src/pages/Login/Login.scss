@@ -1,9 +1,8 @@
 .login_page {
-  height: calc(100vh - 64px);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: calc(150px);
+  margin-top: 100px;
   .login_left {
     display: flex;
     align-items: center;
@@ -26,7 +25,7 @@
         width: 290px;
         height: 145px;
         flex-shrink: 0;
-        background-image: url("../../assets/signin_signup_title_bg.png");
+        // background-image: url("../../assets/signin_signup_title_bg.png");
         background-repeat: no-repeat;
         background-position: center;
         display: flex;
@@ -39,7 +38,7 @@
         font-weight: 700;
         line-height: normal;
         text-transform: uppercase;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
       }
       .login_input_holder {
         .icon_holder {
@@ -183,10 +182,4 @@
   //     display: none;
   //   }
   // }
-  @media screen and (max-width: 1280px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: fit-content;
-  }
 }

@@ -154,9 +154,9 @@ const Signup = () => {
           </Formik>
         </div>
       </div>
-      <div className="signup_right">
+      {/* <div className="signup_right">
         <img src={loginImage} alt="login pic" />
-      </div>
+      </div> */}
     </div>
   );
 };

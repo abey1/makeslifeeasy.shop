@@ -10,6 +10,7 @@ import {
   SET_SEARCHING,
   SET_SEARCHED_ITEMS,
 } from "../../utilities/constants";
+import mle_logo_pic from "../../assets/mle_logo.png";
 
 const Navbar = () => {
   const {
@@ -46,7 +47,7 @@ const Navbar = () => {
           ></i>
         ) : (
           <Link className="logo" to="/">
-            MLE
+            <i class="fa-solid fa-bag-shopping"></i>
           </Link>
         )}
 
