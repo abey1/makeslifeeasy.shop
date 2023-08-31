@@ -69,7 +69,7 @@ const Home = () => {
         </div>
       ) : (
         <div className="main_home">
-          <Items items={items} />
+          <Items items={items} setItems={setItems} />
           <div className="pagination_holder">
             <ReactPaginate
               breakLabel="..."

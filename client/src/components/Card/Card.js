@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Card.scss";
 import { useUserContext } from "../../contexts/UserContext";
-import { server_url } from "../../utilities/constants";
+import { server_url, DELETE_LOCAL } from "../../utilities/constants";
 import { useNavigate } from "react-router-dom";
-const Card = ({ id, title, item_url, image_url }) => {
-  const { _id, favorite } = useUserContext();
+import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
+const Card = ({ id, title, item_url, image_url, items, setItems }) => {
+  const { _id, email, favorite } = useUserContext();
+  const { globalDispatch } = useGlobalAppContext();
   const [liked, setLiked] = useState(favorite.includes(id));
   const navigate = useNavigate();
   useEffect(() => {
@@ -46,6 +48,25 @@ const Card = ({ id, title, item_url, image_url }) => {
       setLiked(!liked);
     }
   };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`${server_url}/goods/delete_item`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      const json = await response.json();
+      console.log(json);
+      const currentItems = items.filter((item, index) => {
+        return item._id !== id;
+      });
+      setItems(currentItems);
+      console.log(currentItems);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <a
       className="card"
@@ -57,17 +78,34 @@ const Card = ({ id, title, item_url, image_url }) => {
       <img className="card-img-top" src={image_url} alt="Card img" />
       <div className="card-body">
         <p className="card-text">{title}</p>
-        {liked ? (
-          <i
-            class="fa-solid fa-heart heart"
-            onClick={(e) => handleFavorite(e)}
-          ></i>
-        ) : (
-          <i
-            class="fa-regular fa-heart heart"
-            onClick={(e) => handleFavorite(e)}
-          ></i>
-        )}
+        <div className="card_bottom_right">
+          {liked ? (
+            <i
+              class="fa-solid fa-heart heart"
+              onClick={(e) => handleFavorite(e)}
+            ></i>
+          ) : (
+            <i
+              class="fa-regular fa-heart heart"
+              onClick={(e) => handleFavorite(e)}
+            ></i>
+          )}
+          {email === "bruckabey@gmail.com" && (
+            <i
+              class="fa-solid fa-trash-can trash"
+              onClick={(e) => {
+                e.preventDefault();
+                const response = window.confirm(
+                  "Are you sure you want to delete this item"
+                );
+                if (response) {
+                  handleDelete();
+                  globalDispatch({ type: DELETE_LOCAL, payload: id });
+                }
+              }}
+            ></i>
+          )}
+        </div>
       </div>
     </a>
   );

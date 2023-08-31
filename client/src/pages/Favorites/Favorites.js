@@ -3,7 +3,11 @@ import { useUserContext } from "../../contexts/UserContext";
 import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
 import { server_url } from "../../utilities/constants";
 import { Items } from "../../components";
-import { SET_SEARCHING } from "../../utilities/constants";
+import {
+  SET_SEARCHING,
+  FAVORITE_MOUNTED,
+  FAVORITE_UNMOUNTED,
+} from "../../utilities/constants";
 import "./Favorites.scss";
 
 const Favorites = () => {
@@ -24,10 +28,14 @@ const Favorites = () => {
   useEffect(() => {
     getFavoriteItems();
     globalDispatch({ type: SET_SEARCHING, payload: false });
+    globalDispatch({ type: FAVORITE_MOUNTED });
+    return () => {
+      globalDispatch({ type: FAVORITE_UNMOUNTED });
+    };
   }, []);
   return (
     <div className="favorites_holder">
-      {favorite.length === 0 ? (
+      {favItems.length === 0 ? (
         <div className="empty">you do not have any favorite items yet</div>
       ) : (
         <div className="items_holder">
