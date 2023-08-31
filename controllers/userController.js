@@ -15,7 +15,7 @@ const getMailOptions = ({ to, text }) => {
   const mailOptions = {
     from: "abeydellelegn@gmail.com",
     to,
-    subject: "Sending Email using Node.js",
+    subject: "Password Reset : makeslifeeasy.shop",
     text,
   };
   return mailOptions;
@@ -94,7 +94,10 @@ const forgetPassword = async (req, res) => {
     // reset password link
     const passwordRestLink = `${process.env.SERVER_URL}/api/user/reset-password/${oldUser._id}/${token}`;
     transporter.sendMail(
-      getMailOptions({ to: oldUser.email, text: passwordRestLink }),
+      getMailOptions({
+        to: oldUser.email,
+        text: `Please click on the following link to reset your makeslifeeasy.shop password \n\n ${passwordRestLink}`,
+      }),
       function (error, info) {
         if (error) {
           return console.log(error);
