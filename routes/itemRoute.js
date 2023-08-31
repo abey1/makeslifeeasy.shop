@@ -7,10 +7,14 @@ const {
   getItemMeta,
   getFavoriteItems,
   getAllItems,
+  deleteItem,
 } = require("../controllers/itemController");
 
 // insert new item
 router.post("/insert", insertItem);
+
+// delete item
+router.post("/delete_item", deleteItem);
 
 // get items
 router.post("/get", getItems);

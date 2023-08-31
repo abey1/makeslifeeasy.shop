@@ -27,12 +27,25 @@
       margin-bottom: 0;
       font-family: "Inika";
     }
-    .heart {
-      padding: 1rem;
-      border-radius: 5px;
-      height: fit-content;
-      background-color: #ddd;
-      color: red;
+    .card_bottom_right {
+      display: flex;
+      flex-direction: column;
+
+      .heart {
+        padding: 1rem;
+        border-radius: 5px;
+        height: fit-content;
+        background-color: #ddd;
+        color: red;
+      }
+      .trash {
+        padding: 1rem;
+        border-radius: 5px;
+        height: fit-content;
+        background-color: #ddd;
+        color: red;
+        margin-top: 1rem;
+      }
     }
   }
 }

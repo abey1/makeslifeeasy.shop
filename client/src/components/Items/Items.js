@@ -3,7 +3,7 @@ import "./Items.scss";
 import { useGlobalAppContext } from "../../contexts/GlobalAppContext";
 import Card from "../Card/Card";
 
-const Items = ({ items }) => {
+const Items = ({ items, setItems }) => {
   const { isLoading } = useGlobalAppContext();
   // console.log("in items", items);
   return (
@@ -20,6 +20,8 @@ const Items = ({ items }) => {
               title={item.title}
               image_url={item.image_url}
               item_url={item.item_url}
+              setItems={setItems}
+              items={items}
             />
           );
         })

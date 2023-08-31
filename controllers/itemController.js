@@ -10,6 +10,16 @@ const insertItem = async (req, res) => {
   }
 };
 
+const deleteItem = async (req, res) => {
+  const { id } = req.body;
+  try {
+    const item = await ItemModel.deleteOne({ _id: id });
+    res.status(200).json(item);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const getItems = async (req, res) => {
   const limitedAmount = 8;
   const { page } = req.body;
@@ -61,4 +71,5 @@ module.exports = {
   getItemMeta,
   getFavoriteItems,
   getAllItems,
+  deleteItem,
 };
