@@ -3,12 +3,13 @@
   align-items: center;
   justify-content: center;
   margin-top: 100px;
+
   .login_left {
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-bottom: 64px;
+
     .login_card {
       width: 545px;
       height: 728px;
@@ -51,6 +52,14 @@
           i {
             font-size: 1.5rem;
           }
+          @media screen and (max-width: 600px) {
+            width: 4rem;
+            height: 50px;
+          }
+          @media screen and (max-width: 500px) {
+            width: 3rem;
+            height: 35px;
+          }
         }
         .login_input {
           width: 482px;
@@ -71,7 +80,15 @@
 
           @media screen and (max-width: 600px) {
             width: 350px;
+            height: 50px;
             font-size: 20px;
+            padding-left: 4rem;
+          }
+          @media screen and (max-width: 500px) {
+            width: 250px;
+            padding-left: 3rem;
+            height: 35px;
+            font-size: 15px;
           }
         }
       }
@@ -98,6 +115,12 @@
         .forgetpassword_link {
           text-decoration: none;
           color: #000;
+          @media screen and (max-width: 600px) {
+            font-size: 18px;
+          }
+          @media screen and (max-width: 500px) {
+            font-size: 15px;
+          }
         }
       }
       .signin_error_holder {
@@ -127,6 +150,16 @@
           font-weight: 700;
           line-height: normal;
           text-transform: uppercase;
+          @media screen and (max-width: 600px) {
+            font-size: 25px;
+            width: 180px;
+            height: 40px;
+          }
+          @media screen and (max-width: 500px) {
+            font-size: 20px;
+            width: 160px;
+            height: 38px;
+          }
         }
         .loader {
           border: 6px solid #f3f3f3; /* Light grey */
@@ -157,9 +190,9 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        margin-top: 4rem;
         .signup_in_login {
           cursor: pointer;
-
           font-family: Istok Web;
           font-size: 24px;
           font-style: normal;
@@ -171,9 +204,24 @@
             color: #4caf50;
           }
         }
+        @media screen and (max-width: 600px) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin-bottom: 4rem;
+          font-size: 20px;
+        }
+        @media screen and (max-width: 500px) {
+          font-size: 18px;
+        }
       }
       @media screen and (max-width: 600px) {
         width: 400px;
+        height: 600px;
+      }
+      @media screen and (max-width: 500px) {
+        width: 310px;
       }
     }
   }

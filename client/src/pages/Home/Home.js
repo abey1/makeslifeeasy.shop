@@ -59,6 +59,7 @@ const Home = () => {
   };
   return (
     <div className="home_holder">
+      <div className="home_title">makeslifeeasy.shop</div>
       {isSearching ? (
         <div>
           {searched_items.length === 0 ? (

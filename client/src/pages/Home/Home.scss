@@ -1,5 +1,17 @@
 .home_holder {
   margin: calc(64px + 2rem) 0;
+  .home_title {
+    font-size: 50px;
+    font-family: Inika;
+    text-align: center;
+    color: #4069fe;
+    @media screen and (max-width: 500px) {
+      font-size: 40px;
+    }
+    @media screen and (max-width: 350px) {
+      font-size: 30px;
+    }
+  }
   .empty {
     width: 100%;
     display: flex;

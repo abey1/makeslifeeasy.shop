@@ -1,5 +1,6 @@
 .card {
   position: relative;
+  width: 250px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -11,6 +12,7 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   text-decoration: none;
+
   .card-img-top {
     width: 100%;
     border-top-left-radius: calc(0.25rem - 1px);
@@ -26,6 +28,12 @@
     .card-text {
       margin-bottom: 0;
       font-family: "Inika";
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .card_bottom_right {
       display: flex;
@@ -45,7 +53,22 @@
         background-color: #ddd;
         color: red;
         margin-top: 1rem;
+        @media screen and (max-width: 600px) {
+          margin-top: 0;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
       }
     }
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    width: 150px;
   }
 }

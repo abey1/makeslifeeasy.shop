@@ -68,13 +68,7 @@ const Card = ({ id, title, item_url, image_url, items, setItems }) => {
     }
   };
   return (
-    <a
-      className="card"
-      style={{ width: "250px" }}
-      href={item_url}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a className="card" href={item_url} target="_blank" rel="noreferrer">
       <img className="card-img-top" src={image_url} alt="Card img" />
       <div className="card-body">
         <p className="card-text">{title}</p>

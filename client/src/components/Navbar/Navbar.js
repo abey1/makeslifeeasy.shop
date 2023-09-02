@@ -9,8 +9,6 @@ import {
   MENU_CLOSE,
   SET_SEARCHING,
   SET_SEARCHED_ITEMS,
-  FAVORITE_UNMOUNTED,
-  ADMIN_UNMOUNTED,
 } from "../../utilities/constants";
 import mle_logo_pic from "../../assets/mle_logo.png";
 
